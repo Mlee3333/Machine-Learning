@@ -30,4 +30,27 @@ testpred = LogReg.predict(Xtest)
 print(trainpred[0:9])
 print(ytrain[0:9])
 print(testpred[0:9])
-print(ytest.head(10))
+print(ytest[0:9])
+
+#confusion matrix
+
+from sklearn.metrics import confusion_matrix
+
+cmatrix = confusion_matrix(ytrain,trainpred)
+print(cmatrix)
+sns.heatmap(cmatrix,annot=True,fmt="d")
+plt.show()
+
+#classfication report
+
+from sklearn.metrics import classification_report
+
+creport = classification_report(ytrain,trainpred)
+print(creport)
+
+cmatrix2 = confusion_matrix(ytest,testpred)
+sns.heatmap(cmatrix2,annot=True,fmt="d")
+plt.show()
+
+testreport = classification_report(ytest,testpred)
+print(testreport)
